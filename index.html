@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Front-End Coding Exam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        Front-End Coding Exam
+    </header>
+
+    <div class="main-content">
+        <!-- Task 1: Group Users by Department -->
+        <div class="task-container">
+            <h2>Task 1: groupByDepartment</h2>
+            <p>Write a function called groupByDepartment that accepts an array of employee objects and
+            returns a grouped object by department.</p>
+            <button onclick="testGroupByDepartment()">Show Output</button>
+            <pre id="output1">Click run to see result.</pre>
+        </div>
+
+        <!-- Task 2: Fetch User Data -->
+        <div class="task-container">
+            <h2>Task 2: fetchUserData</h2>
+            <p>Simulate fetching user data using async/await. Mock an API call that resolves after 1 second
+            using setTimeout, then logs the user object.</p>
+            <button onclick="testFetchUserData()">Show Output</button>
+            <pre id="output2">Click run to see result.</pre>
+        </div>
+
+        <!-- Task 3: Remove Duplicates without using Set -->
+        <div class="task-container">
+            <h2>Task 3: removeDuplicates</h2>
+            <p>Write a function called removeDuplicates that removes duplicate values from an array
+            without using Set.</p>
+            <button onclick="testRemoveDuplicates()">Show Output</button>
+            <pre id="output3">Click run to see result.</pre>
+        </div>
+
+        <!-- Task 4: Document Object Model Add Task -->
+        <div class="task-container">
+            <h2>Task 4: DOM Add Task</h2>
+            <p>Write JavaScript code that will add a new with text "New Task" to the list each time the
+                button is clicked.</p>
+            <ul id="taskList">
+                <li>Task A</li>
+                <li>Task B</li>
+            </ul>
+            <button onclick="addNewTask()">Add "New Task"</button>
+        </div>
+
+        <!-- Calculate Tax based on Progressive Brackets -->
+        <div class="task-container">
+            <h2>Task 5: calculateTax</h2>
+            <p>Write a function calculateTax that returns the tax due based on progressive brackets.</p>
+            <button onclick="testCalculateTax()">Run</button>
+            <pre id="output5">Click run to see result.</pre>
+        </div>
+    </div>
+
+    <footer>
+        Made by <a href="https://github.com/yinscript" target="_blank">yinscript</a> &copy; 2025
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/groupByDepartment.js"></script>
+    <script src="scripts/fetchUserData.js"></script>
+    <script src="scripts/removeDuplicates.js"></script>
+    <script src="scripts/calculateTax.js"></script>
+
+    <script>
+        function testGroupByDepartment() {
+            const employees = [
+                { name: 'Alice', department: 'HR' },
+                { name: 'Bob', department: 'Finance' },
+                { name: 'Charlie', department: 'HR' },
+            ];
+            const result = groupByDepartment(employees);
+            document.getElementById('output1').textContent = JSON.stringify(result, null, 2);
+        }
+
+        function testFetchUserData() {
+            fetchUserData().then(result => {
+                document.getElementById('output2').textContent = JSON.stringify(result, null, 2);
+            });
+        }
+
+        function testRemoveDuplicates() {
+            const input = [1, 2, 2, 3, 4, 4, 5];
+            const result = removeDuplicates(input);
+            document.getElementById('output3').textContent = JSON.stringify(result);
+        }
+
+        function addNewTask() {
+            const ul = document.getElementById('taskList');
+            const li = document.createElement('li');
+            li.textContent = 'New Task';
+            ul.appendChild(li);
+        }
+
+        function testCalculateTax() {
+            const result = calculateTax(25000);
+            document.getElementById('output5').textContent = `Tax for ₱25,000 = ₱${result}`;
+        }
+    </script>
+</body>
+
+</html>
